@@ -28,6 +28,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import com.moviles.examenmoviles.R
+import com.moviles.examenmoviles.data.CoworkingSpace
 import com.moviles.examenmoviles.ui.components.AppBottomBar
 import com.moviles.examenmoviles.ui.theme.AppIconTint
 import com.moviles.examenmoviles.ui.theme.AppPrimary
@@ -37,6 +38,8 @@ import com.moviles.examenmoviles.ui.theme.AppSecondaryText
 @Composable
 fun CoworkingDetailScreen(
     space: CoworkingSpace,
+    selectedBottomRoute: String,
+    onBottomRouteClick: (String) -> Unit,
     onBackClick: () -> Unit,
     onReserveClick: () -> Unit,
     modifier: Modifier = Modifier
@@ -65,7 +68,12 @@ fun CoworkingDetailScreen(
                 )
             )
         },
-        bottomBar = { AppBottomBar() }
+        bottomBar = {
+            AppBottomBar(
+                selectedRoute = selectedBottomRoute,
+                onRouteClick = onBottomRouteClick
+            )
+        }
     ) { paddingValues ->
         Column(
             modifier = Modifier
@@ -165,5 +173,6 @@ private fun InfoRow(
         }
     }
 }
+
 
 

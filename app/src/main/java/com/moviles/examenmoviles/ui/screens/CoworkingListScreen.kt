@@ -17,49 +17,17 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import com.moviles.examenmoviles.R
+import com.moviles.examenmoviles.data.CoworkingSpace
+import com.moviles.examenmoviles.data.mockCoworkingSpaces
 import com.moviles.examenmoviles.ui.components.AppBottomBar
 import com.moviles.examenmoviles.ui.components.CoworkingSpaceCard
-
-data class CoworkingSpace(
-    val name: String,
-    val description: String,
-    val location: String,
-    val capacity: Int,
-    val pricePerHour: Double,
-    val isAvailable: Boolean
-)
-
-val mockCoworkingSpaces = listOf(
-    CoworkingSpace(
-        name = "North Hub Lounge",
-        description = "Shared space with good internet and quiet work areas.",
-        location = "Ciudad Quesada",
-        capacity = 20,
-        pricePerHour = 8.5,
-        isAvailable = true
-    ),
-    CoworkingSpace(
-        name = "Creative Room 2",
-        description = "Comfortable room for team sessions and meetings.",
-        location = "Guapiles",
-        capacity = 10,
-        pricePerHour = 11.0,
-        isAvailable = false
-    ),
-    CoworkingSpace(
-        name = "Focus Desk Zone",
-        description = "Open desks for individual work with natural light.",
-        location = "Puerto Viejo",
-        capacity = 15,
-        pricePerHour = 7.25,
-        isAvailable = true
-    )
-)
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun CoworkingListScreen(
     spaces: List<CoworkingSpace> = mockCoworkingSpaces,
+    selectedBottomRoute: String,
+    onBottomRouteClick: (String) -> Unit,
     onSpaceClick: (CoworkingSpace) -> Unit,
     modifier: Modifier = Modifier
 ) {
@@ -79,7 +47,12 @@ fun CoworkingListScreen(
                 )
             )
         },
-        bottomBar = { AppBottomBar() }
+        bottomBar = {
+            AppBottomBar(
+                selectedRoute = selectedBottomRoute,
+                onRouteClick = onBottomRouteClick
+            )
+        }
     ) { paddingValues ->
         LazyColumn(
             modifier = Modifier
@@ -97,3 +70,4 @@ fun CoworkingListScreen(
         }
     }
 }
+

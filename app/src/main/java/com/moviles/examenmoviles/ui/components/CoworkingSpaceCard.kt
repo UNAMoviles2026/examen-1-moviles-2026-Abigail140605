@@ -22,7 +22,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
-import com.moviles.examenmoviles.ui.screens.CoworkingSpace
+import com.moviles.examenmoviles.data.CoworkingSpace
 import com.moviles.examenmoviles.ui.theme.AppBorder
 import com.moviles.examenmoviles.ui.theme.AppIconTint
 import com.moviles.examenmoviles.ui.theme.AppPrimary
@@ -104,3 +104,4 @@ private fun InfoRow(
         )
     }
 }
+
